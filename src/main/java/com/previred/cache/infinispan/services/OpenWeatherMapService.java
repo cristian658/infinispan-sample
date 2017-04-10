@@ -16,14 +16,15 @@ public class OpenWeatherMapService implements WeatherService {
 	
 	@Override
 	public LocationWeather getWeatherForLocation(String location) {
-		Document dom = weatherDAO.fetchData(location);
-		Element current = (Element) dom.getElementsByTagName("current").item(0);
+		return weatherDAO.fetchData(location);
+		/*Element current = (Element) dom.getElementsByTagName("current").item(0);
 	    Element temperature = (Element) current.getElementsByTagName("temperature").item(0);
 	    Element weather = (Element) current.getElementsByTagName("weather").item(0);
 	    String[] split = location.split(",");
+	    
 	    return new LocationWeather(Float.parseFloat(temperature.getAttribute("value")), 
 	    		weather.getAttribute("value"), 
-	    		split[1].trim());		
+	    		split[1].trim());		*/
 	}
 
 }
