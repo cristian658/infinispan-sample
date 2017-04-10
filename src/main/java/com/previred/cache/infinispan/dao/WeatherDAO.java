@@ -38,10 +38,9 @@ public class WeatherDAO {
 				throw new Exception();
 			}
 			System.out.println("Estado: " + conn.getResponseCode());
-			LocationWeather l = objectMapper.readValue(conn.getInputStream(), LocationWeather.class);
+			LocationWeather locationWeather = objectMapper.readValue(conn.getInputStream(), LocationWeather.class);
 			
-			System.out.println("Mapeo: " + l.toString());
-			return l;//db.parse(conn.getInputStream());
+			return locationWeather;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

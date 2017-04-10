@@ -1,10 +1,16 @@
 package com.previred.cache.infinispan.rs;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import com.previred.cache.infinispan.domain.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.previred.cache.infinispan.services.WeatherService;
 
 @Path("/weather")
@@ -19,10 +25,18 @@ public class WeatherController {
     @Path("/getall")
     @Produces({ "application/json" })
     public String getAll() {
-		StringBuilder responds = new StringBuilder();
+		String response = "";
+		ObjectMapper mapper = new ObjectMapper();
+		List<LocationWeather> listaUbicaciones = new ArrayList<LocationWeather>();
 		for(String location : locations){
-			responds.append(weatherService.getWeatherForLocation(location).toString());
+			listaUbicaciones.add(weatherService.getWeatherForLocation(location));
 		}
-        return responds.toString();
+		try {
+			response = mapper.writeValueAsString(listaUbicaciones);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return response;
     }
 }
