@@ -12,7 +12,7 @@ import org.w3c.dom.Document;
 public class WeatherDAO {
 	
 	final private static String OWM_BASE_URL = "http://api.openweathermap.org/data/2.5/weather";
-	final private static String APIKEY = "bcf843eff7f26ee7cc5172b31cec74f0";
+	final private static String APIKEY = "...";
 	
 	private DocumentBuilder db;
 	
