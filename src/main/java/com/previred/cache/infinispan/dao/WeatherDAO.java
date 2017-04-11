@@ -18,15 +18,12 @@ public class WeatherDAO {
 	final private static String APIKEY = "bcf843eff7f26ee7cc5172b31cec74f0";
 	final private static String FORMAT_JSON = "json";
 
-	private DocumentBuilder db;
-
-	public LocationWeather fetchData(String location) {
+		public LocationWeather fetchData(String location) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		HttpURLConnection conn = null;
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
+		LocationWeather locationWeather = null;
+		
 		try {
-			db = dbf.newDocumentBuilder();
 			String query = String.format("%s?q=%s&mode=%s&units=metric&APPID=%s", OWM_BASE_URL,
 					  URLEncoder.encode(location.replaceAll(" ", ""), "UTF-8"), FORMAT_JSON, APIKEY);
 			System.out.println("URL: " + query);
@@ -35,20 +32,18 @@ public class WeatherDAO {
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
 			if (conn.getResponseCode() != 200) {
+				System.out.println("Estado: " + conn.getResponseCode());
 				throw new Exception();
 			}
-			System.out.println("Estado: " + conn.getResponseCode());
-			LocationWeather locationWeather = objectMapper.readValue(conn.getInputStream(), LocationWeather.class);
-			
-			return locationWeather;
+			 locationWeather = objectMapper.readValue(conn.getInputStream(), LocationWeather.class);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
 		} finally {
 			if (conn != null) {
 				conn.disconnect();
 			}
 		}
+		return locationWeather;
 	}
 
 }
