@@ -34,7 +34,6 @@ public class WeatherController {
 		try {
 			response = mapper.writeValueAsString(listaUbicaciones);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         return response;
