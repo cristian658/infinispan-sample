@@ -7,6 +7,8 @@ public class Main {
 	private float humidity;
 	private float temp_min;
 	private float temp_max;
+	private float sea_level;
+	private float grnd_level;
 	
 	public float getTemp() {
 		return temp;
@@ -38,6 +40,19 @@ public class Main {
 	public void setTemp_max(float temp_max) {
 		this.temp_max = temp_max;
 	}
+	public float getSea_level() {
+		return sea_level;
+	}
+	public void setSea_level(float sea_level) {
+		this.sea_level = sea_level;
+	}
+	public float getGrnd_level() {
+		return grnd_level;
+	}
+	public void setGrnd_level(float grnd_level) {
+		this.grnd_level = grnd_level;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -51,9 +66,14 @@ public class Main {
 		builder.append(temp_min);
 		builder.append(", temp_max=");
 		builder.append(temp_max);
+		builder.append(", sea_level=");
+		builder.append(sea_level);
+		builder.append(", grnd_level=");
+		builder.append(grnd_level);
 		builder.append("]");
 		return builder.toString();
 	}
+	
 	
 	
 	
