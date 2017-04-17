@@ -14,13 +14,18 @@ public class CacheSampleManagerProvider {
 	
 	private DefaultCacheManager manager;
 	
-	public DefaultCacheManager getCacheManager() throws Exception {
+	public DefaultCacheManager getCacheManager() {
         if (manager == null) {
         	System.out.println("Generando configuracion por defecto");
-        	manager = new DefaultCacheManager("infinispan.xml");
+            GlobalConfiguration glob = new GlobalConfigurationBuilder()
+                    .build(); // Se construye la configuracion global
+            Configuration loc = new ConfigurationBuilder()
+            		.jmxStatistics().enable()// Habilitacion de estadistica JMX
+                    .build();
+            manager = new DefaultCacheManager(glob, loc, true);
         }
         return manager;
-    }
+}
 
     @PreDestroy
     public void cleanUp() {
