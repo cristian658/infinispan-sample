@@ -8,11 +8,12 @@ import org.infinispan.manager.DefaultCacheManager;
 import com.previred.cache.infinispan.config.CacheSampleManagerProvider;
 
 public class Resources {
+	
 	@Inject
 	CacheSampleManagerProvider cacheManagerProvider;
 	
 	@Produces
-    DefaultCacheManager getDefaultCacheManager() {
+    DefaultCacheManager getDefaultCacheManager() throws Exception {
         return cacheManagerProvider.getCacheManager();
 	}
 	

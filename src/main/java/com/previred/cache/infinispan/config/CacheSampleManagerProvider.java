@@ -1,7 +1,5 @@
 package com.previred.cache.infinispan.config;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -16,15 +14,10 @@ public class CacheSampleManagerProvider {
 	
 	private DefaultCacheManager manager;
 	
-	public DefaultCacheManager getCacheManager() {
+	public DefaultCacheManager getCacheManager() throws Exception {
         if (manager == null) {
         	System.out.println("Generando configuracion por defecto");
-            GlobalConfiguration glob = new GlobalConfigurationBuilder()
-                    .build(); // Se construye la configuracion global
-            Configuration loc = new ConfigurationBuilder()
-            		.jmxStatistics().enable()// Habilitacion de estadistica JMX
-                    .build();
-            manager = new DefaultCacheManager(glob, loc, true);
+        	manager = new DefaultCacheManager("infinispan.xml");
         }
         return manager;
     }
