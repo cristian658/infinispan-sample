@@ -23,7 +23,6 @@ public class CacheSampleManagerProvider {
                     .build(); // Se construye la configuracion global
             Configuration loc = new ConfigurationBuilder()
             		.jmxStatistics().enable()// Habilitacion de estadistica JMX
-            		.expiration().lifespan(1, TimeUnit.MINUTES) //
                     .build();
             manager = new DefaultCacheManager(glob, loc, true);
         }
@@ -34,6 +33,6 @@ public class CacheSampleManagerProvider {
     public void cleanUp() {
         manager.stop();
         manager = null;
-}
+    }
 
 }
