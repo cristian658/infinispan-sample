@@ -1,6 +1,10 @@
 package com.previred.cache.infinispan.domain;
 
-public class Weather {
+import java.io.Serializable;
+
+public class Weather implements Serializable {
+	
+	private static final long serialVersionUID = 2432981515787439228L;
 	
 	private long id;
 	private String main;

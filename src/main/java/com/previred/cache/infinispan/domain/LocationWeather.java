@@ -1,8 +1,12 @@
 package com.previred.cache.infinispan.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class LocationWeather {
+public class LocationWeather implements Serializable {
+	
+	
+	private static final long serialVersionUID = -5055079223373216114L;
 	
 	private Coord coord;
 	private List<Weather> weather;

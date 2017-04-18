@@ -1,7 +1,11 @@
 package com.previred.cache.infinispan.domain;
 
-public class Main {
+import java.io.Serializable;
 
+public class Main implements Serializable {
+
+	private static final long serialVersionUID = -4384688869920390175L;
+	
 	private float temp;
 	private float pressure;
 	private float humidity;

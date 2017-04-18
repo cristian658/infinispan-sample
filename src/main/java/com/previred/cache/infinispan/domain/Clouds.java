@@ -1,6 +1,10 @@
 package com.previred.cache.infinispan.domain;
 
-public class Clouds {
+import java.io.Serializable;
+
+public class Clouds implements Serializable {
+	
+	private static final long serialVersionUID = 3135109285524358903L;
 	
 	private float all;
 

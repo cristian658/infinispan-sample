@@ -1,6 +1,10 @@
 package com.previred.cache.infinispan.domain;
 
-public class Coord {
+import java.io.Serializable;
+
+public class Coord implements Serializable {
+	
+	private static final long serialVersionUID = -9137990996214088339L;
 	
 	private float lon;
 	private float lat;

@@ -1,6 +1,10 @@
 package com.previred.cache.infinispan.domain;
 
-public class Sys {
+import java.io.Serializable;
+
+public class Sys implements Serializable {
+	
+	private static final long serialVersionUID = -1967011578418989119L;
 	
 	private long type;
 	private long id;

@@ -1,6 +1,10 @@
 package com.previred.cache.infinispan.domain;
 
-public class Wind {
+import java.io.Serializable;
+
+public class Wind implements Serializable {
+	
+	private static final long serialVersionUID = 6398894976624061722L;
 	
 	private float speed;
 	private float deg;
