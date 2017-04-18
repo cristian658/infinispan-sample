@@ -6,6 +6,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Location {
 	
 	private String location;
+	
+	public Location(){}
+
+	public Location(String location) {
+		super();
+		this.location = location;
+	}
 
 	public String getLocation() {
 		return location;

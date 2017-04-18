@@ -16,6 +16,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.previred.cache.infinispan.domain.Location;
 import com.previred.cache.infinispan.domain.LocationWeather;
+import com.previred.cache.infinispan.ejb.LocationEJB;
 import com.previred.cache.infinispan.services.WeatherService;
 
 @Path("/weather")
@@ -23,11 +24,16 @@ public class WeatherController {
 	
 	static final String[] locations = { "Valparaiso, Chile", "Valdivia, Chile", "Santiago, Chile" };
 	
+	
+	
 	@Inject @Named("openWeatherMapService")
 	private WeatherService weatherService;
 	
 	@Inject @Named("cachingWeatherService")
 	private WeatherService weatherServiceCache;
+	
+	@Inject
+	private LocationEJB locEJB;
 	
 	@GET
     @Path("/getall")
@@ -72,7 +78,7 @@ public class WeatherController {
 		String response = "";
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			response = mapper.writeValueAsString(locations);
+			response = mapper.writeValueAsString(locEJB.getLocations());
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
